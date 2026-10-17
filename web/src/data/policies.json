@@ -1,0 +1,188 @@
+{
+ "returns": {
+  "title": "Returns & Refunds",
+  "intro": "Clear steps for returning an eligible Prime Tech purchase, arranging an exchange, or resolving a product fault.",
+  "version": "29 July 2026",
+  "sections": [
+   {
+    "id": "overview",
+    "title": "Return window at a glance",
+    "html": "<p>An eligible purchase may be presented for return within <strong>7 days</strong> of delivery or in-store purchase. The product must be unused, complete, and accompanied by proof of purchase.</p><p class=\"note\">Contact our team before sending an item so we can confirm eligibility and the correct return route.</p>"
+   },
+   {
+    "id": "eligibility",
+    "title": "What qualifies for return",
+    "html": "<ul><li>The request reaches us within 7 days of purchase or confirmed delivery.</li><li>The device is in its original condition, without scratches, dents, liquid exposure, or other damage.</li><li>Original packaging, inserts, cables, adapters, documentation, and bundled accessories are included.</li><li>The receipt, order confirmation, or payment reference is available.</li><li>Serial numbers and identifying labels remain intact and readable.</li></ul>"
+   },
+   {
+    "id": "excluded",
+    "title": "Items we cannot accept",
+    "html": "<ul><li>Activated or iCloud-locked devices, or devices enrolled into a carrier arrangement.</li><li>Products damaged after collection or delivery, including accidental and liquid damage.</li><li>Software, downloads, gift cards, customised products, and confirmed special orders.</li><li>Products missing packaging or supplied accessories, unless Prime Tech confirms otherwise.</li><li>Items expressly marked clearance, final sale, or non-returnable before purchase.</li></ul>"
+   },
+   {
+    "id": "process",
+    "title": "Starting a return",
+    "html": "<ol><li><strong>Contact Prime Tech:</strong> share your order reference and the reason for the request.</li><li><strong>Get return approval:</strong> our team confirms eligibility and issues return instructions.</li><li><strong>Prepare the product:</strong> pack the item securely with its original contents.</li><li><strong>Deliver the item:</strong> return it to our Nairobi store or use the agreed collection method.</li><li><strong>Inspection:</strong> we normally assess received products within 1–2 business days.</li></ol>"
+   },
+   {
+    "id": "refunds",
+    "title": "Refunds",
+    "html": "<ul><li>Approved refunds are normally initiated within 5–7 business days after inspection.</li><li>Funds are returned through the original payment route where possible.</li><li>Bank, card, or mobile-money processing times may extend beyond our initiation date.</li><li>Delivery charges are not refundable unless Prime Tech supplied the wrong item or the item arrived defective.</li></ul>"
+   },
+   {
+    "id": "exchanges",
+    "title": "Exchanges",
+    "html": "<p>An eligible product may be exchanged for another colour, storage option, or model when stock is available. You will pay any increase in price; where the replacement costs less, the balance will be handled using the applicable refund method.</p>"
+   },
+   {
+    "id": "warranty",
+    "title": "Faults and warranty support",
+    "html": "<p>A fault reported after the 7-day return period is handled under the warranty applicable to that product. Coverage may be provided by Apple or another stated warranty provider and remains subject to diagnosis and their terms.</p><p>Read the <a href=\"/terms#warranty\">warranty section of our Terms &amp; Conditions</a> for exclusions and support routes.</p>"
+   },
+   {
+    "id": "contact",
+    "title": "Arrange a return",
+    "html": "<p>Have the product and proof of purchase ready when contacting our team.</p>Call or WhatsApp<a href=\"tel:+254703829443\">+254 703 829 443</a>Email<a href=\"mailto:primetechke21@gmail.com\">primetechke21@gmail.com</a>Visit usNorwich Union House, 4th Floor, Suite 15, Mama Ngina Street, NairobiOnline<a href=\"https://primetech.ke\">primetech.ke</a>"
+   },
+   {
+    "id": "rights",
+    "title": "Policy changes and customer rights",
+    "html": "<p>We may update this policy to reflect changes to our operations or legal obligations. The version shown at the top applies from its stated date.</p><p class=\"note\">This policy does not limit rights available under Kenyan consumer-protection law.</p>"
+   }
+  ]
+ },
+ "privacy": {
+  "title": "Privacy Policy",
+  "intro": "This notice explains what information Prime Tech Kenya handles, why we need it, and the choices available to you.",
+  "version": "29 July 2026",
+  "sections": [
+   {
+    "id": "scope",
+    "title": "Scope of this policy",
+    "html": "<p>This policy covers information collected through primetech.ke, our Nairobi store, phone and WhatsApp conversations, deliveries, trade-in requests, and customer support. We process personal data in line with Kenya’s Data Protection Act, 2019 and applicable regulations.</p>"
+   },
+   {
+    "id": "collection",
+    "title": "Information we collect",
+    "html": "<ul><li><strong>Contact and identity details:</strong> name, phone number, email, delivery address, and order identifiers.</li><li><strong>Transaction details:</strong> purchased items, payment status, M-Pesa or bank references, and invoice records.</li><li><strong>Device and usage information:</strong> IP address, browser, pages visited, referral source, and timestamps.</li><li><strong>Conversations:</strong> information you include in support, social-media, trade-in, or warranty enquiries.</li></ul><p class=\"note\">Payment providers process sensitive payment credentials. Prime Tech does not store complete card details.</p>"
+   },
+   {
+    "id": "use",
+    "title": "How we use information",
+    "html": "<ul><li>Confirm, prepare, deliver, and support purchases.</li><li>Respond to enquiries and facilitate eligible warranty or return requests.</li><li>Maintain inventory, accounting, fraud prevention, and transaction records.</li><li>Improve site performance and understand how customers use our services.</li><li>Send promotional communication only where permitted, with an option to opt out.</li></ul>"
+   },
+   {
+    "id": "legal-basis",
+    "title": "Why processing is permitted",
+    "html": "<p>Depending on the activity, we process information to perform a purchase contract, comply with legal obligations, protect legitimate business and security interests, or act on your consent. You may withdraw consent for optional marketing at any time.</p>"
+   },
+   {
+    "id": "sharing",
+    "title": "Who receives information",
+    "html": "<p>We disclose only what is reasonably required to provide the requested service.</p><ul><li>Couriers and riders receive delivery and contact details.</li><li>Payment providers receive transaction information needed to process payment.</li><li>Hosting, analytics, and support providers process limited information on our behalf.</li><li>Authorities may receive information where disclosure is required by law.</li></ul><p class=\"note\">Prime Tech does not sell customer personal information.</p>"
+   },
+   {
+    "id": "cookies",
+    "title": "Cookies and analytics",
+    "html": "<p>We use essential cookies for sessions, cart functions, security, and site preferences. Analytics may help us measure page performance and customer journeys. Browser controls can block optional cookies, although some site features may then work differently.</p>"
+   },
+   {
+    "id": "retention",
+    "title": "How long information is kept",
+    "html": "<p>Records are retained only for as long as they serve the purpose for which they were collected or are needed for tax, accounting, warranty, fraud prevention, dispute handling, or other legal requirements. Information is deleted or anonymised when it is no longer required.</p>"
+   },
+   {
+    "id": "security",
+    "title": "Security safeguards",
+    "html": "<p>We use administrative, technical, and physical measures intended to prevent unauthorised access, alteration, loss, or misuse. Internet services cannot be guaranteed completely secure, so we review and improve these controls as our systems evolve.</p>"
+   },
+   {
+    "id": "transfers",
+    "title": "Service providers outside Kenya",
+    "html": "<p>Some technology providers may process information outside Kenya. Where that occurs, we use providers and safeguards intended to maintain protection consistent with applicable Kenyan data-protection requirements.</p>"
+   },
+   {
+    "id": "rights",
+    "title": "Your privacy rights",
+    "html": "<p>Subject to applicable law, you may ask to:</p><ul><li>Access personal information held about you.</li><li>Correct inaccurate or incomplete information.</li><li>Object to or restrict certain processing.</li><li>Request deletion where there is no lawful reason to retain the information.</li><li>Withdraw consent or stop direct marketing.</li></ul>"
+   },
+   {
+    "id": "children",
+    "title": "Children’s information",
+    "html": "<p>Our store is not designed to collect personal information directly from children. A parent or guardian should place an order or contact us where the customer is under 18.</p>"
+   },
+   {
+    "id": "contact",
+    "title": "Requests and questions",
+    "html": "<p>Contact us to exercise a privacy right or ask how information relating to you is handled.</p>Call or WhatsApp<a href=\"tel:+254703829443\">+254 703 829 443</a>Email<a href=\"mailto:primetechke21@gmail.com\">primetechke21@gmail.com</a>Visit usNorwich Union House, 4th Floor, Suite 15, Mama Ngina Street, NairobiOnline<a href=\"https://primetech.ke\">primetech.ke</a><p>Your use of the store is also governed by our <a href=\"/terms\">Terms &amp; Conditions</a>.</p>"
+   },
+   {
+    "id": "updates",
+    "title": "Policy updates",
+    "html": "<p>This notice may change when our systems, providers, or legal obligations change. The current version and its effective date will remain available on this page.</p>"
+   }
+  ]
+ },
+ "terms": {
+  "title": "Terms & Conditions",
+  "intro": "A practical guide to purchasing from Prime Tech Kenya, including payment, delivery, warranty, and customer responsibilities.",
+  "version": "29 July 2026",
+  "sections": [
+   {
+    "id": "using-primetech",
+    "title": "Using Prime Tech",
+    "html": "<p>These terms apply when you browse our website, contact our sales team, place an order, or buy from our Nairobi store. By using those services, you confirm that you can enter into a binding purchase agreement or are acting with a parent or guardian’s permission.</p><p>Please use our services lawfully and provide accurate information when placing an order or requesting support.</p>"
+   },
+   {
+    "id": "products",
+    "title": "Products and availability",
+    "html": "<p>Prime Tech supplies Apple devices and related accessories. Product photography is intended to represent the model and finish, but packaging, accessories, colour appearance, and minor manufacturing details may vary.</p><ul><li>Availability is confirmed when our team accepts and processes your order.</li><li>Storage, colour, connectivity, and condition should be checked before payment.</li><li>We may correct catalogue errors or withdraw an unavailable listing.</li></ul>"
+   },
+   {
+    "id": "pricing",
+    "title": "Pricing and payment",
+    "html": "<p>Prices are shown in Kenyan Shillings and may change as inventory and supplier costs change.</p><ul><li>Payment options may include M-Pesa, bank transfer, and supported card services.</li><li>An order is not complete until payment is confirmed and the selected unit is allocated.</li><li>We may pause or cancel transactions that appear incomplete, duplicated, or fraudulent.</li></ul><p class=\"note\">Where a clear pricing error occurs, we will contact you before fulfilment and offer a correction or refund.</p>"
+   },
+   {
+    "id": "shipping-delivery",
+    "title": "Orders, collection and shipping",
+    "html": "<p>We confirm accepted orders using the contact details supplied at checkout.</p><ul><li><strong>Nairobi:</strong> delivery may be completed by a Prime Tech rider or another agreed courier.</li><li><strong>Store collection:</strong> customers may collect or send a rider after receiving confirmation that the order is ready.</li><li><strong>Countrywide shipping:</strong> orders are sent through an available courier selected for the destination.</li><li><strong>Delivery charges:</strong> any applicable fee is confirmed during checkout or before dispatch.</li><li><strong>Timelines:</strong> estimates begin after payment and stock confirmation and may change because of courier, weather, security, or destination conditions.</li><li><strong>Receiving an order:</strong> inspect the parcel and verify the device details promptly, then report transit damage or an incorrect item as soon as reasonably possible.</li></ul>"
+   },
+   {
+    "id": "warranty",
+    "title": "Warranty and product support",
+    "html": "<p>Eligible products may carry the manufacturer’s limited warranty or the warranty expressly stated on your invoice. Coverage, duration, and service options depend on the specific product.</p><p>Accidental damage, liquid exposure, misuse, unauthorised repairs, altered serial numbers, and damage outside the applicable warranty are not covered. We can help identify the appropriate support route, but warranty assessment remains subject to inspection and the relevant warranty provider’s terms.</p>"
+   },
+   {
+    "id": "returns",
+    "title": "Returns and exchanges",
+    "html": "<p>Return eligibility, inspection requirements, refund timing, and exclusions are explained in our <a href=\"/returns\">Returns &amp; Refunds Policy</a>. That policy forms part of these terms.</p>"
+   },
+   {
+    "id": "liability",
+    "title": "Responsibility and liability",
+    "html": "<p>We take reasonable care to keep product and service information accurate. To the extent permitted by Kenyan law, Prime Tech is not responsible for indirect loss arising from website interruption, third-party services, courier delays, or use outside a product’s intended purpose.</p><p>Nothing in these terms excludes rights or remedies that cannot legally be limited.</p>"
+   },
+   {
+    "id": "privacy",
+    "title": "Privacy and account information",
+    "html": "<p>We use customer information to process purchases, coordinate delivery, prevent fraud, and provide support. Read our <a href=\"/privacy\">Privacy Policy</a> for details about collection, retention, sharing, and your rights.</p>"
+   },
+   {
+    "id": "intellectual-property",
+    "title": "Content and intellectual property",
+    "html": "<p>Prime Tech branding, original copy, page layouts, and other website content may not be reproduced commercially without written permission. Apple names and marks belong to Apple Inc. and are used only to identify compatible products.</p>"
+   },
+   {
+    "id": "law",
+    "title": "Governing law",
+    "html": "<p>These terms are interpreted under the laws of Kenya. We encourage customers to contact us first so concerns can be resolved promptly; unresolved disputes remain subject to the jurisdiction of Kenyan courts.</p>"
+   },
+   {
+    "id": "contact",
+    "title": "Contact and revisions",
+    "html": "<p>Questions about an order or these terms can be directed to our team using the details below.</p>Call or WhatsApp<a href=\"tel:+254703829443\">+254 703 829 443</a>Email<a href=\"mailto:primetechke21@gmail.com\">primetechke21@gmail.com</a>Visit usNorwich Union House, 4th Floor, Suite 15, Mama Ngina Street, NairobiOnline<a href=\"https://primetech.ke\">primetech.ke</a><p class=\"note\">We may revise these terms as our services change. The date at the top identifies the version currently in effect.</p>"
+   }
+  ]
+ }
+}
