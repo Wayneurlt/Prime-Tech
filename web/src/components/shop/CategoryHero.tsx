@@ -49,34 +49,34 @@ export function CategoryHero({ family: f, count, from }: { family: Family; count
     <section
       ref={root}
       data-header-dark={dark ? "" : undefined}
-      className={`relative overflow-hidden pb-14 pt-[calc(var(--header-h)+5rem)] ${dark ? "bg-black text-white" : "bg-white text-ink"}`}
+      className={`relative overflow-hidden pb-7 pt-[calc(var(--header-h)+2.75rem)] lg:pb-14 lg:pt-[calc(var(--header-h)+5rem)] ${dark ? "bg-black text-white" : "bg-white text-ink"}`}
     >
       <div className="container-x grid items-end gap-10 lg:grid-cols-[1fr_1.15fr]">
-        <div className="pb-4">
+        <div className="lg:pb-4">
           <p data-intro className={`eyebrow ${dark ? "text-white/50" : "text-mute"}`}>
             Shop · {count} models
           </p>
-          <h1 data-title data-intro className="mt-4 text-[clamp(3.5rem,11vw,10rem)] font-bold leading-[0.85] tracking-[-0.055em]">
+          <h1 data-title data-intro className="mt-3 text-[clamp(3rem,11vw,10rem)] font-bold leading-[0.85] tracking-[-0.055em] lg:mt-4">
             {f.name}
           </h1>
-          <p data-fade data-intro className="mt-6 text-2xl font-medium tracking-tight sm:text-3xl">
+          <p data-fade data-intro className="mt-3 text-lg font-medium tracking-tight sm:text-3xl lg:mt-6">
             {f.tagline}
           </p>
-          <p data-fade data-intro className={`mt-4 max-w-md text-lg ${dark ? "text-white/60" : "text-mute"}`}>
+          <p data-fade data-intro className={`mt-4 hidden max-w-md text-lg md:block ${dark ? "text-white/60" : "text-mute"}`}>
             {f.intro}
           </p>
-          <div data-fade data-intro className="mt-8 flex flex-wrap items-center gap-4">
+          <div data-fade data-intro className="mt-5 flex flex-wrap items-center gap-4 lg:mt-8">
             {from && (
               <span className={`rounded-full px-5 py-2.5 text-sm ${dark ? "bg-white/10" : "bg-paper"}`}>
                 From <span className="font-semibold">{formatKsh(from)}</span>
               </span>
             )}
-            <a href="#products" className={`flex items-center gap-2 text-sm font-semibold ${dark ? "text-white" : "text-ink"}`}>
+            <a href="#products" className={`hidden items-center gap-2 text-sm font-semibold lg:flex ${dark ? "text-white" : "text-ink"}`}>
               Browse all <ArrowDown className="h-4 w-4" />
             </a>
           </div>
         </div>
-        <div data-media data-intro className={`relative aspect-[16/11] overflow-hidden rounded-[32px] ${dark ? "bg-black" : "bg-white"}`}>
+        <div data-media data-intro className={`relative hidden aspect-[16/11] overflow-hidden rounded-[32px] md:block ${dark ? "bg-black" : "bg-white"}`}>
           <Image src={f.image} alt={`${f.name} lineup`} fill preload sizes="(min-width: 1024px) 55vw, 100vw" className="object-contain" />
         </div>
       </div>

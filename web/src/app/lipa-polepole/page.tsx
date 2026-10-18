@@ -58,7 +58,7 @@ export default function LipaPolePolePage() {
               </p>
               <div className="mt-10 flex flex-wrap gap-3">
                 <Magnetic>
-                  <a href="#calculator" className="btn btn-primary" data-cursor="Plan">
+                  <a href="#calculator" className="btn btn-primary">
                     <span>Calculate my plan</span>
                     <ArrowRight className="h-4 w-4" />
                   </a>

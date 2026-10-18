@@ -95,7 +95,7 @@ export function FinanceFeature({ featured }: { featured: { title: string; price:
             ))}
           </ol>
 
-          <Link href="/lipa-polepole" className="btn btn-dark mt-12" data-cursor="Plan">
+          <Link href="/lipa-polepole" className="btn btn-dark mt-12">
             <span>Calculate my plan</span>
             <ArrowRight className="h-4 w-4" />
           </Link>

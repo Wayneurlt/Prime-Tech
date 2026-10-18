@@ -68,7 +68,7 @@ export function ContactForm() {
         </Field>
       </div>
 
-      <button type="submit" disabled={!ready} className="btn btn-primary mt-6 w-full" data-cursor="Send">
+      <button type="submit" disabled={!ready} className="btn btn-primary mt-6 w-full">
         <MessageCircle className="h-4 w-4" />
         <span>Open WhatsApp</span>
       </button>

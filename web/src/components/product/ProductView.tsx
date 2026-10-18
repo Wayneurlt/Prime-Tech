@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { ChevronRight, MessageCircle, ShieldCheck, Truck, Repeat2, Wallet, Check, ShoppingBag } from "lucide-react";
 import { gsap, SplitText, useGSAP, MOTION_OK } from "@/lib/gsap";
 import { whenRevealed } from "@/lib/intro";
@@ -43,6 +43,10 @@ export function ProductView({ product: p, familyName }: { product: P; familyName
   const imageFor = (i: number) => p.images.find((im) => im.color === colorNames[i]?.name) ?? p.images[i] ?? p.images[0];
   const image = imageFor(colorIdx);
   const [prevImage, setPrevImage] = useState(image);
+  const [prevTint, setPrevTint] = useState(() => tintFor(colorNames[0]?.hex));
+  const tint = tintFor(colorNames[colorIdx]?.hex);
+  const buyRow = useRef<HTMLDivElement>(null);
+  const [showBar, setShowBar] = useState(false);
   const [added, setAdded] = useState(false);
 
   const plan = price ? financePlan(price) : null;
@@ -73,10 +77,46 @@ export function ProductView({ product: p, familyName }: { product: P; familyName
     { scope: root },
   );
 
+  // Hover zoom on fine pointers: the photo magnifies around the cursor.
+  useEffect(() => {
+    const el = stage.current;
+    if (!el || !window.matchMedia("(pointer: fine) and (prefers-reduced-motion: no-preference)").matches) return;
+    const img = () => el.querySelector<HTMLElement>("[data-next] img");
+    const move = (e: PointerEvent) => {
+      const r = el.getBoundingClientRect();
+      const x = ((e.clientX - r.left) / r.width) * 100;
+      const y = ((e.clientY - r.top) / r.height) * 100;
+      gsap.to(img(), { scale: 1.9, transformOrigin: `${x}% ${y}%`, duration: 0.6, ease: "power3", overwrite: "auto" });
+    };
+    const leave = () => gsap.to(img(), { scale: 1, duration: 0.7, ease: "expo", overwrite: "auto" });
+    el.addEventListener("pointermove", move);
+    el.addEventListener("pointerleave", leave);
+    return () => {
+      el.removeEventListener("pointermove", move);
+      el.removeEventListener("pointerleave", leave);
+    };
+  }, []);
+
+  // Mobile sticky buy bar once the main buttons have scrolled away.
+  useEffect(() => {
+    const el = buyRow.current;
+    if (!el) return;
+    const io = new IntersectionObserver(([e]) => setShowBar(!e.isIntersecting && e.boundingClientRect.top < 0));
+    io.observe(el);
+    return () => {
+      io.disconnect();
+      document.documentElement.classList.remove("pt-buybar");
+    };
+  }, []);
+  useEffect(() => {
+    document.documentElement.classList.toggle("pt-buybar", showBar);
+  }, [showBar]);
+
   // Colour change: circular reveal from the swatch that was clicked.
   const pickColor = (i: number, e?: React.MouseEvent) => {
     if (i === colorIdx) return;
     setPrevImage(image);
+    setPrevTint(tint);
     setColorIdx(i);
     const el = stage.current?.querySelector<HTMLElement>("[data-next]");
     if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -133,11 +173,17 @@ export function ProductView({ product: p, familyName }: { product: P; familyName
         <div className="grid gap-10 lg:grid-cols-[1.15fr_1fr] lg:gap-16">
           {/* Gallery */}
           <div className="lg:sticky lg:top-28 lg:self-start">
-            <div ref={stage} data-stage data-intro className="relative aspect-square overflow-hidden rounded-[32px] bg-paper">
+            <div
+              ref={stage}
+              data-stage
+              data-intro
+              className="relative aspect-square cursor-zoom-in overflow-hidden rounded-[32px] bg-paper"
+              style={{ background: stageBg(prevTint) }}
+            >
               {prevImage && (
                 <Image src={prevImage.src} alt="" fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-contain p-8 mix-blend-multiply sm:p-14" aria-hidden />
               )}
-              <div data-next className="absolute inset-0 bg-paper">
+              <div data-next className="absolute inset-0" style={{ background: stageBg(tint) }}>
                 {image && (
                   <Image
                     key={image.src}
@@ -158,22 +204,28 @@ export function ProductView({ product: p, familyName }: { product: P; familyName
                 </span>
               </div>
             </div>
-            {p.images.length > 1 && (
-              <div className="mt-4 flex gap-3 overflow-x-auto no-scrollbar">
-                {colorNames.map((c, i) => {
-                  const im = imageFor(i);
-                  return (
+            {colorNames.length > 1 && (
+              <div className="pointer-events-none relative z-10 -mt-[72px] flex justify-center pb-4">
+                <div
+                  data-thumb
+                  className="pointer-events-auto flex items-center gap-2 rounded-full border border-white/70 bg-white/75 py-2 pl-2 pr-4 shadow-[0_12px_30px_-12px_rgba(0,0,0,0.25)] backdrop-blur-xl"
+                  role="radiogroup"
+                  aria-label="Colour"
+                >
+                  {colorNames.map((c, i) => (
                     <button
                       key={c.name}
-                      data-thumb
+                      role="radio"
+                      aria-checked={i === colorIdx}
+                      aria-label={c.name}
+                      title={c.name}
                       onClick={(e) => pickColor(i, e)}
-                      className={`relative h-20 w-20 shrink-0 rounded-2xl bg-paper transition-[opacity,box-shadow] duration-500 ${i === colorIdx ? "ring-2 ring-accent" : "opacity-70 hover:opacity-100"}`}
-                      aria-label={`Show ${c.name}`}
-                    >
-                      {im && <Image src={im.src} alt="" fill sizes="80px" className="object-contain p-2 mix-blend-multiply" />}
-                    </button>
-                  );
-                })}
+                      className={`h-7 w-7 rounded-full border border-black/10 transition-transform duration-300 hover:scale-110 ${i === colorIdx ? "ring-2 ring-accent ring-offset-2" : ""}`}
+                      style={{ background: c.hex }}
+                    />
+                  ))}
+                  <span className="ml-1 min-w-16 text-sm font-medium">{colorNames[colorIdx]?.name}</span>
+                </div>
               </div>
             )}
           </div>
@@ -286,10 +338,10 @@ export function ProductView({ product: p, familyName }: { product: P; familyName
                 </fieldset>
               )}
 
-              <div className="mt-10 grid gap-3 sm:grid-cols-2">
+              <div ref={buyRow} className="mt-10 grid gap-3 sm:grid-cols-2">
                 {price ? (
                   <>
-                    <button onClick={add} disabled={!inStock} className={`btn ${added ? "bg-[#22c55e] text-white" : "btn-dark"} h-14!`} data-cursor="Add">
+                    <button onClick={add} disabled={!inStock} className={`btn ${added ? "bg-[#22c55e] text-white" : "btn-dark"} h-14!`}>
                       {added ? <Check className="h-5 w-5" /> : <ShoppingBag className="h-5 w-5" />}
                       <span>{added ? "Added to bag" : "Add to bag"}</span>
                     </button>
@@ -331,6 +383,42 @@ export function ProductView({ product: p, familyName }: { product: P; familyName
           </div>
         </div>
       </div>
+
+      {price && (
+        <div
+          aria-hidden={!showBar}
+          className={`fixed inset-x-0 bottom-0 z-40 border-t border-line bg-white/90 px-4 pb-[max(12px,env(safe-area-inset-bottom))] pt-3 backdrop-blur-xl transition-transform duration-500 ease-[var(--ease-expo)] lg:hidden ${
+            showBar ? "translate-y-0" : "pointer-events-none translate-y-full"
+          }`}
+        >
+          <div className="flex items-center gap-3">
+            {image && (
+              <span className="relative h-12 w-12 shrink-0 rounded-xl" style={{ background: stageBg(tint) }}>
+                <Image src={image.src} alt="" fill sizes="48px" className="object-contain p-1 mix-blend-multiply" />
+              </span>
+            )}
+            <span className="min-w-0 flex-1">
+              <span className="block truncate text-sm font-semibold">{p.title}</span>
+              <span className="block text-sm text-mute">{formatKsh(price)}</span>
+            </span>
+            <button onClick={add} disabled={!inStock} tabIndex={showBar ? 0 : -1} className={`btn ${added ? "bg-[#22c55e] text-white" : "btn-primary"} h-11! px-5! text-sm`}>
+              {added ? <Check className="h-4 w-4" /> : <ShoppingBag className="h-4 w-4" />}
+              <span>{added ? "Added" : "Add to bag"}</span>
+            </button>
+          </div>
+        </div>
+      )}
     </section>
   );
+}
+
+/** Soft wash of the product colour behind the photo. */
+function tintFor(hex?: string) {
+  const h = /^#[0-9a-f]{6}$/i.test(hex ?? "") ? hex! : "#cccccc";
+  const mix = (i: number) => Math.round(parseInt(h.slice(i, i + 2), 16) * 0.3 + [0xf4, 0xf4, 0xf2][(i - 1) / 2] * 0.7);
+  return `rgb(${mix(1)}, ${mix(3)}, ${mix(5)})`;
+}
+
+function stageBg(tint: string) {
+  return `radial-gradient(circle at 50% 55%, ${tint} 0%, #f4f4f2 72%)`;
 }

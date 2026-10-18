@@ -24,8 +24,7 @@ export function WhatsAppFab() {
       target="_blank"
       rel="noreferrer"
       aria-label="Chat with Prime Tech on WhatsApp"
-      data-cursor="Chat"
-      className="invisible fixed bottom-5 right-5 z-40 grid h-14 w-14 place-items-center rounded-full bg-[#25d366] text-white opacity-0 shadow-[0_10px_30px_-5px_rgba(37,211,102,0.6)] sm:bottom-8 sm:right-8"
+      className="invisible fixed bottom-5 right-5 z-40 grid h-14 w-14 place-items-center rounded-full bg-[#25d366] text-white opacity-0 shadow-[0_10px_30px_-5px_rgba(37,211,102,0.6)] sm:bottom-8 sm:right-8 [.pt-buybar_&]:bottom-24"
     >
       <span className="absolute inset-0 animate-ping rounded-full bg-[#25d366] opacity-25" />
       <MessageCircle className="relative h-6 w-6" />

@@ -51,8 +51,16 @@ export default function Home() {
 
   return (
     <>
-      <Hero href={productHref(hero)} price={hero.priceFrom ?? Number(hero.variants[0]?.price)} chips={chips} />
-      <TrustMarquee />
+      <Hero
+        href={productHref(hero)}
+        price={hero.priceFrom ?? Number(hero.variants[0]?.price)}
+        product={{ slug: hero.slug, family: hero.family, title: hero.title }}
+        chips={chips}
+      />
+      {/* Panel that slides up over the pinned hero (desktop: over a full screen; mobile: a soft overlap). */}
+      <div className="relative z-10 -mt-7 bg-white shadow-[0_-20px_60px_-24px_rgba(0,0,0,0.35)] lg:[html[data-motion]_&]:-mt-[100svh]">
+        <TrustMarquee />
+      </div>
       <CategoryScroller panels={panels} />
 
       <section className="bg-paper pb-24 pt-8 sm:pb-32">

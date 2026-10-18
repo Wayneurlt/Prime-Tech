@@ -256,7 +256,6 @@ export function Header({ menu }: { menu: MenuData }) {
                         <Link
                           href={it.href}
                           className="group flex h-full flex-col rounded-2xl bg-paper p-4 transition-colors hover:bg-paper-2"
-                          data-cursor="View"
                         >
                           <div className="relative aspect-square">
                             {it.image && (

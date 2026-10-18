@@ -98,7 +98,7 @@ export function ProductCard({
         dark ? "bg-ink-2 text-white" : "bg-white"
       }`}
     >
-      <Link href={href} className="relative block overflow-hidden rounded-[22px] bg-paper" data-cursor="View" aria-label={p.title}>
+      <Link href={href} className="relative block overflow-hidden rounded-[22px] bg-paper" aria-label={p.title}>
         <div className="relative aspect-[4/5]">
           <div ref={imgWrap} className="absolute inset-6">
             {image && (

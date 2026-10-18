@@ -162,7 +162,6 @@ export function CategoryScroller({ panels }: { panels: CategoryPanel[] }) {
                 key={p.slug}
                 href={`/${p.slug}`}
                 data-panel
-                data-cursor="Explore"
                 className={`group relative flex h-[68svh] min-h-[440px] shrink-0 flex-col overflow-hidden rounded-[32px] lg:h-[78vh] lg:w-[min(62vw,860px)] ${
                   dark ? "bg-black text-white" : "bg-white text-ink"
                 }`}

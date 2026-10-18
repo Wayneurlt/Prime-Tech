@@ -25,7 +25,7 @@ export function ClosingCta({
           <p className="mx-auto max-w-xl text-lg text-mute">{copy}</p>
           <div className="mt-10 flex flex-wrap justify-center gap-3">
             <Magnetic>
-              <Link href="/iphone" className="btn btn-dark" data-cursor="Shop">
+              <Link href="/iphone" className="btn btn-dark">
                 <span>Shop devices</span>
                 <ArrowRight className="h-4 w-4" />
               </Link>

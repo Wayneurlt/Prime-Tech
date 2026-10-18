@@ -53,7 +53,7 @@ export function Footer() {
               Genuine Apple devices, honest advice and flexible payment, from our store on Mama Ngina Street to your door anywhere in Kenya.
             </p>
             <Magnetic className="mt-8 inline-block">
-              <a href={whatsappLink("Hello Prime Tech!")} target="_blank" rel="noreferrer" className="btn btn-primary" data-cursor="Chat">
+              <a href={whatsappLink("Hello Prime Tech!")} target="_blank" rel="noreferrer" className="btn btn-primary">
                 <MessageCircle className="h-4 w-4" />
                 <span>WhatsApp us</span>
               </a>
@@ -154,7 +154,7 @@ export function Footer() {
           <p className="max-w-md text-xs">
             Apple, iPhone, Mac, iPad, Apple Watch and AirPods are trademarks of Apple Inc. Prime Tech is an independent retailer.
           </p>
-          <button onClick={toTop} className="group flex items-center gap-2 text-white/70 hover:text-white" data-cursor="Top">
+          <button onClick={toTop} className="group flex items-center gap-2 text-white/70 hover:text-white">
             Back to top
             <span className="grid h-9 w-9 place-items-center rounded-full border border-white/20 transition-transform duration-500 group-hover:-translate-y-1">
               <ArrowUp className="h-4 w-4" />

@@ -267,10 +267,10 @@ export function CategoryView({
   );
 
   return (
-    <section ref={root} id="products" className="scroll-mt-24 bg-paper pb-24 pt-10">
+    <section ref={root} id="products" className="scroll-mt-24 bg-paper pb-24 pt-4 lg:pt-10">
       <div className="container-x">
-        <div data-toolbar className="relative z-20 mb-8 flex lg:sticky lg:top-[84px] flex-wrap items-center gap-3 rounded-[28px] border border-white/60 bg-paper/90 p-2 shadow-[0_10px_40px_-20px_rgba(0,0,0,0.25)] backdrop-blur-xl">
-          <label className="flex h-12 min-w-0 flex-1 items-center gap-3 rounded-full border border-line bg-white px-5 sm:max-w-sm">
+        <div data-toolbar className="relative z-20 mb-5 flex lg:mb-8 lg:sticky lg:top-[84px] flex-wrap items-center gap-3 rounded-[28px] border border-white/60 bg-paper/90 p-2 shadow-[0_10px_40px_-20px_rgba(0,0,0,0.25)] backdrop-blur-xl">
+          <label className="flex h-12 min-w-0 basis-full items-center sm:basis-auto sm:flex-1 gap-3 rounded-full border border-line bg-white px-5 sm:max-w-sm">
             <Search className="h-4 w-4 shrink-0 text-mute" />
             <input
               value={q}
@@ -285,18 +285,18 @@ export function CategoryView({
               </button>
             )}
           </label>
-          <button onClick={() => setDrawer(true)} className="chip h-12! lg:hidden">
+          <button onClick={() => setDrawer(true)} className="chip h-12! flex-1 justify-center sm:flex-none lg:hidden">
             <SlidersHorizontal className="h-4 w-4" /> Filters {activeCount > 0 && <span className="rounded-full bg-accent px-1.5 text-xs text-white">{activeCount}</span>}
           </button>
           <p className="ml-auto hidden text-sm text-mute sm:block" aria-live="polite">
             <span className="font-semibold text-ink tabular-nums">{filtered.length}</span> of {products.length} products
           </p>
-          <label className="relative">
+          <label className="relative flex-1 sm:flex-none">
             <span className="sr-only">Sort by</span>
             <select
               value={sort}
               onChange={(e) => update(() => setSort(e.target.value as Sort))}
-              className="h-12 appearance-none rounded-full border border-line bg-white pl-5 pr-11 text-sm font-medium outline-none"
+              className="h-12 w-full appearance-none rounded-full border border-line bg-white pl-5 pr-11 text-sm font-medium outline-none"
             >
               <option value="newest">Newest</option>
               <option value="price-asc">Price: Low to high</option>

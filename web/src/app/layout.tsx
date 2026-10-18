@@ -12,7 +12,6 @@ import { WhatsAppFab } from "@/components/layout/WhatsAppFab";
 import { SmoothScroll } from "@/components/motion/SmoothScroll";
 import { PageTransition, RouteWatcher } from "@/components/motion/PageTransition";
 import { Preloader } from "@/components/motion/Preloader";
-import { Cursor } from "@/components/motion/Cursor";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
@@ -96,7 +95,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <SearchPalette items={searchItems()} />
         <WhatsAppFab />
         <PageTransition />
-        <Cursor />
         <SmoothScroll />
         <Suspense fallback={null}>
           <RouteWatcher />

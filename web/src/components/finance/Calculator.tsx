@@ -178,7 +178,7 @@ export function Calculator({ devices }: { devices: DeviceOption[] }) {
           </div>
         </dl>
 
-        <a href={whatsappLink(message)} target="_blank" rel="noreferrer" className="btn btn-primary mt-8 w-full" data-cursor="Apply">
+        <a href={whatsappLink(message)} target="_blank" rel="noreferrer" className="btn btn-primary mt-8 w-full">
           <MessageCircle className="h-4 w-4" />
           <span>Send details via WhatsApp</span>
         </a>

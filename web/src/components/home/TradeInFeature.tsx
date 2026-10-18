@@ -53,7 +53,7 @@ export function TradeInFeature() {
             Upgrade to the latest iPhone or Mac without the full price tag. Tell us what you have, get a quote on WhatsApp, and we&apos;ll knock it straight off your new device.
           </p>
           <Magnetic className="mt-10 inline-block">
-            <Link href="/trade-in" className="btn btn-light" data-cursor="Value">
+            <Link href="/trade-in" className="btn btn-light">
               <span>Check my device&apos;s value</span>
               <ArrowRight className="h-4 w-4" />
             </Link>

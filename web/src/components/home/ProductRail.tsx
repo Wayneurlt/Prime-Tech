@@ -77,7 +77,6 @@ export function ProductRail({ products, dark = false }: { products: Card[]; dark
     <div ref={root} className="relative">
       <div
         ref={rail}
-        data-cursor="Drag"
         className="no-scrollbar flex snap-x snap-mandatory gap-5 overflow-x-auto px-4 pb-4 sm:px-8 xl:px-14"
         style={{ scrollPaddingInline: "16px" }}
       >

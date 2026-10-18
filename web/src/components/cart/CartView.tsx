@@ -124,7 +124,7 @@ export function CartView() {
                     </span>
                   </p>
                 )}
-                <a href={checkoutLink(cart)} target="_blank" rel="noreferrer" className="btn btn-primary mt-6 w-full" data-cursor="Order">
+                <a href={checkoutLink(cart)} target="_blank" rel="noreferrer" className="btn btn-primary mt-6 w-full">
                   <MessageCircle className="h-4 w-4" />
                   <span>Checkout on WhatsApp</span>
                 </a>

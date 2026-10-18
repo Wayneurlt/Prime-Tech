@@ -26,7 +26,7 @@ function Video({ id, title, label }: { id: string; title: string; label: string 
             className="absolute inset-0 h-full w-full"
           />
         ) : (
-          <button onClick={() => setPlay(true)} className="absolute inset-0" data-cursor="Play" aria-label={`Play: ${title}`}>
+          <button onClick={() => setPlay(true)} className="absolute inset-0" aria-label={`Play: ${title}`}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`}

@@ -306,7 +306,7 @@ export function TradeInWizard({ iphones, upgrades }: { iphones: string[]; upgrad
                   </div>
                 ))}
               </dl>
-              <a data-field href={whatsappLink(message)} target="_blank" rel="noreferrer" className="btn btn-primary mt-8 w-full sm:w-auto" data-cursor="Send">
+              <a data-field href={whatsappLink(message)} target="_blank" rel="noreferrer" className="btn btn-primary mt-8 w-full sm:w-auto">
                 <MessageCircle className="h-4 w-4" />
                 <span>Send trade-in request on WhatsApp</span>
               </a>
