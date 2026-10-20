@@ -7,7 +7,6 @@ import { ArrowRight } from "lucide-react";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { whenRevealed } from "@/lib/intro";
 import { formatKsh } from "@/lib/catalog";
-import { financePlan } from "@/lib/site";
 
 export type HeroSlide = {
   key: string;
@@ -233,7 +232,6 @@ export function MobileHero({ slides }: { slides: HeroSlide[] }) {
 
   const active = slides[index];
   const dark = active.tone === "dark";
-  const monthly = active.from !== null ? financePlan(active.from).monthly : null;
 
   return (
     <section
@@ -336,12 +334,11 @@ export function MobileHero({ slides }: { slides: HeroSlide[] }) {
             <p
               className={`text-right text-sm leading-tight ${dark ? "text-white/55" : "text-mute"}`}
             >
-              From{" "}
+              From
+              <br />
               <span className={`font-semibold ${dark ? "text-white" : "text-ink"}`}>
                 {formatKsh(active.from)}
               </span>
-              <br />
-              or {formatKsh(monthly!)}/mo
             </p>
           )}
         </div>
