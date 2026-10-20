@@ -78,6 +78,31 @@ export function Hero({ href, price, product, chips }: Props) {
     window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const desktop = () => window.matchMedia("(min-width: 1024px)").matches;
 
+  /** Mobile focus: scale and centre the chosen phone in the gap between the header and the panel. */
+  const mobileFocus = (btn: HTMLElement, mode: HTMLElement) => {
+    const sec = root.current!.getBoundingClientRect();
+    const header = document.querySelector("header")?.getBoundingClientRect();
+    const panel = root.current!.querySelector<HTMLElement>("[data-h-panel]");
+    const top = (header ? header.bottom : sec.top + 110) + 12;
+    const bottom = panel
+      ? panel.getBoundingClientRect().top - 8
+      : sec.bottom - 280;
+    const phoneH = mode.querySelector<HTMLElement>("[data-tilt]")!.offsetHeight;
+    const scale = Math.min(1.4, (bottom - top) / phoneH);
+    // The mode layer scales about its centre; its untransformed box starts at the button's top.
+    const b = btn.getBoundingClientRect();
+    const centre0 = b.top + mode.offsetHeight / 2;
+    const phoneTop = top + (bottom - top - scale * phoneH) / 2;
+    const y = phoneTop - centre0 + (scale * mode.offsetHeight) / 2;
+    const glow = root.current!.querySelector<HTMLElement>("[data-h-glow]")!;
+    const g = glow.getBoundingClientRect();
+    const glowY =
+      phoneTop +
+      (scale * phoneH) / 2 -
+      (g.top + g.height / 2 - (gsap.getProperty(glow, "y") as number));
+    return { scale, y, glowY };
+  };
+
   /** Positions the "mode" layer of every phone: fanned line-up, or one in focus. */
   const layout = useCallback((focus: number | null, instant = false) => {
     const dur = instant || reduce() ? 0 : 1.1;
@@ -88,6 +113,7 @@ export function Hero({ href, price, product, chips }: Props) {
       if (focus === null) {
         gsap.to(mode, {
           x: 0,
+          y: 0,
           xPercent: FAN(i, s),
           yPercent: 0,
           scale: 1,
@@ -98,20 +124,30 @@ export function Hero({ href, price, product, chips }: Props) {
           overwrite: "auto",
         });
       } else if (i === focus) {
+        const fit = desktop() ? null : mobileFocus(el, mode!);
         gsap.to(mode, {
           x: 0,
+          y: fit?.y ?? 0,
           xPercent: desktop() ? -78 : 0,
-          yPercent: desktop() ? -2 : -62,
-          scale: desktop() ? 1.32 : 1.28,
+          yPercent: desktop() ? -2 : 0,
+          scale: fit?.scale ?? 1.32,
           autoAlpha: 1,
           duration: dur,
           ease: "expo.inOut",
           overwrite: "auto",
         });
+        if (fit)
+          gsap.to("[data-h-glow]", {
+            y: fit.glowY,
+            duration: dur,
+            ease: "expo.inOut",
+            overwrite: "auto",
+          });
       } else {
         const dir = i < focus ? -1 : 1;
         gsap.to(mode, {
           x: 0,
+          y: 0,
           xPercent: dir * (360 + Math.abs(i - focus) * 60),
           yPercent: 6,
           scale: 0.8,
@@ -122,6 +158,8 @@ export function Hero({ href, price, product, chips }: Props) {
         });
       }
     });
+    if (focus === null)
+      gsap.to("[data-h-glow]", { y: 0, duration: dur, ease: "expo.inOut" });
     // Glow follows the active phone.
     const target = focus ?? null;
     if (target !== null) {
@@ -451,7 +489,8 @@ export function Hero({ href, price, product, chips }: Props) {
       duration: reduce() ? 0 : 0.5,
       ease: "power2.in",
     });
-    layout(i);
+    // Next frame, so the focus panel has rendered and mobile can fit the phone above it.
+    requestAnimationFrame(() => layout(i));
   };
 
   function close() {
@@ -534,11 +573,12 @@ export function Hero({ href, price, product, chips }: Props) {
       <section
         ref={root}
         data-header-dark
-        className="hero-pw relative h-svh min-h-[720px] overflow-hidden bg-ink text-white [--pw:min(29vw,27vh)] md:[--pw:min(21vh,19vw)] lg:min-h-0 lg:[--pw:min(18vh,16vw)]"
+        className="hero-pw relative h-svh min-h-[600px] overflow-hidden bg-ink text-white lg:min-h-0 lg:[--pw:min(18vh,16vw)]"
       >
+        {/* Below lg the copy sits in flow and the stage fills what's left; pb clears the panel that overlaps the hero. */}
         <div
           data-h-depth
-          className="grain absolute inset-0 overflow-hidden bg-black"
+          className="grain absolute inset-0 flex flex-col overflow-hidden bg-black pb-7 lg:block lg:pb-0"
           onClick={(e) => {
             if (selected !== null && e.target === e.currentTarget) close();
           }}
@@ -546,7 +586,7 @@ export function Hero({ href, price, product, chips }: Props) {
           {/* Copy */}
           <div
             data-h-copy
-            className="container-x relative z-20 flex flex-col items-center pt-[calc(var(--header-h)+4.5rem)] text-center lg:pt-[calc(var(--header-h)+3.5rem)]"
+            className="container-x relative z-20 flex shrink-0 flex-col items-center pt-[calc(var(--header-h)+3.25rem)] text-center sm:pt-[calc(var(--header-h)+4.5rem)] lg:pt-[calc(var(--header-h)+3.5rem)]"
           >
             <p
               data-h-fade
@@ -562,14 +602,15 @@ export function Hero({ href, price, product, chips }: Props) {
             <h1
               data-h-title
               data-intro
-              className="mt-4 text-[clamp(3rem,8.6vw,7.5rem)] font-bold leading-[0.9] tracking-[-0.05em]"
+              className="mt-3 text-[clamp(3rem,8.6vw,7.5rem)] font-bold leading-[0.9] tracking-[-0.05em] sm:mt-4"
             >
-              iPhone 18 Pro Max<span className="text-accent">.</span>
+              iPhone 18 <span className="whitespace-nowrap">Pro Max</span>
+              <span className="text-accent">.</span>
             </h1>
             <p
               data-h-fade
               data-intro
-              className="mt-4 max-w-xl text-lg text-white/65 sm:text-xl"
+              className="mt-3 max-w-xl text-base text-white/65 sm:mt-4 sm:text-xl"
             >
               Four gorgeous colours.{" "}
               <span className="serif-accent text-white">Pick yours.</span>
@@ -577,7 +618,7 @@ export function Hero({ href, price, product, chips }: Props) {
             <div
               data-h-fade
               data-intro
-              className="mt-7 flex flex-wrap items-center justify-center gap-3"
+              className="mt-5 flex flex-wrap items-center justify-center gap-3 sm:mt-7"
             >
               <Magnetic>
                 <Link href={href} className="btn btn-primary">
@@ -621,7 +662,7 @@ export function Hero({ href, price, product, chips }: Props) {
           {/* Stage */}
           <div
             data-h-stage
-            className="pointer-events-none absolute inset-x-0 bottom-[7vh] top-[50%] sm:top-[48%] md:bottom-[4vh] lg:top-[47%]"
+            className="pointer-events-none relative mt-2 min-h-0 flex-1 max-lg:[container-type:size] max-md:[--pw:min(25cqw,35cqh)] md:max-lg:[--pw:min(19cqw,35cqh)] lg:absolute lg:inset-x-0 lg:bottom-[4vh] lg:top-[47%] lg:mt-0"
           >
             <div
               data-h-glow
@@ -709,23 +750,23 @@ export function Hero({ href, price, product, chips }: Props) {
           {chosen && (
             <div
               data-h-panel
-              className="absolute inset-x-0 bottom-[5vh] z-20 flex flex-col items-center px-4 text-center lg:inset-x-auto lg:bottom-auto lg:left-[calc(50%+var(--pw)*0.55)] lg:top-1/2 lg:-translate-y-1/2 lg:items-start lg:text-left"
+              className="absolute inset-x-0 bottom-[calc(1.75rem+3vh)] z-20 flex flex-col items-center px-4 text-center lg:inset-x-auto lg:bottom-auto lg:left-[calc(50%+var(--pw)*0.55)] lg:top-1/2 lg:-translate-y-1/2 lg:items-start lg:text-left"
             >
               <p className="eyebrow text-white/50">iPhone 18 Pro Max</p>
               <p
-                className="serif-accent mt-1 text-[clamp(3rem,6vw,5.5rem)] leading-none"
+                className="serif-accent mt-1 text-[clamp(2.75rem,6vw,5.5rem)] leading-none"
                 style={{ color: chosen.text }}
               >
                 {chosen.name}
               </p>
-              <p className="mt-4 text-sm text-white/60 lg:text-base">
+              <p className="mt-3 text-sm text-white/60 lg:mt-4 lg:text-base">
                 256GB from{" "}
                 <span className="font-semibold text-white">
                   {formatKsh(price)}
                 </span>{" "}
                 · or {formatKsh(monthly)}/mo
               </p>
-              <div className="mt-6 flex flex-wrap justify-center gap-2.5 lg:justify-start">
+              <div className="mt-4 flex flex-wrap justify-center gap-2.5 lg:mt-6 lg:justify-start">
                 <button
                   onClick={buy}
                   className={`btn ${added ? "bg-[#22c55e] text-white" : "btn-primary"}`}
@@ -743,7 +784,7 @@ export function Hero({ href, price, product, chips }: Props) {
               </div>
               <button
                 onClick={close}
-                className="mt-5 flex items-center gap-2 text-sm text-white/60 hover:text-white"
+                className="mt-3 flex items-center gap-2 text-sm text-white/60 hover:text-white lg:mt-5"
               >
                 <ArrowLeft className="h-4 w-4" /> All colours
               </button>
