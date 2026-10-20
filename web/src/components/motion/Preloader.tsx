@@ -54,6 +54,8 @@ export function Preloader() {
         .to("[data-half='top']", { yPercent: -100, duration: 1.1, ease: "inOut" }, "<0.25")
         .to("[data-half='bottom']", { yPercent: 100, duration: 1.1, ease: "inOut" }, "<")
         .set(root.current, { display: "none" });
+      // Play the intro at ~2x: the full sequence, done in under two seconds.
+      tl.timeScale(1.9);
     },
     { scope: root },
   );

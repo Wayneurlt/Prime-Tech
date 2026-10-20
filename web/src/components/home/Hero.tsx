@@ -29,24 +29,28 @@ const PHONES = [
   {
     name: "Black",
     file: "black",
+    swatch: "#2b2b2e",
     text: "#c9cbd1",
     glow: "rgba(170,175,190,0.34)",
   },
   {
     name: "Silver",
     file: "silver",
+    swatch: "#e3e4e5",
     text: "#eceef1",
     glow: "rgba(235,238,245,0.3)",
   },
   {
     name: "Glacier",
     file: "glacier",
+    swatch: "#b9cfe6",
     text: "#b9d2f0",
     glow: "rgba(100,160,255,0.45)",
   },
   {
     name: "Burgundy",
     file: "burgundy",
+    swatch: "#6b2333",
     text: "#d4627c",
     glow: "rgba(215,45,90,0.45)",
   },
@@ -530,7 +534,7 @@ export function Hero({ href, price, product, chips }: Props) {
       <section
         ref={root}
         data-header-dark
-        className="relative h-svh min-h-[720px] overflow-hidden bg-ink text-white [--pw:min(29vw,27vh)] md:[--pw:min(21vh,19vw)] lg:min-h-0 lg:[--pw:min(18vh,16vw)]"
+        className="hero-pw relative h-svh min-h-[720px] overflow-hidden bg-ink text-white [--pw:min(29vw,27vh)] md:[--pw:min(21vh,19vw)] lg:min-h-0 lg:[--pw:min(18vh,16vw)]"
       >
         <div
           data-h-depth
@@ -581,10 +585,36 @@ export function Hero({ href, price, product, chips }: Props) {
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </Magnetic>
-              <p className="text-sm text-white/50">
+              <p className="order-last basis-full text-sm text-white/50 lg:order-none lg:basis-auto">
                 From <span className="text-white">{formatKsh(price)}</span> or{" "}
                 <span className="text-white">{formatKsh(monthly)}/mo</span>
               </p>
+              {/* Colour picker: opens the same focus view as tapping a phone */}
+              <div
+                className="flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.04] p-1.5 backdrop-blur-md lg:pl-4"
+                role="group"
+                aria-label="Pick your colour"
+              >
+                <span className="eyebrow hidden text-[0.62rem] text-white/50 lg:inline">
+                  Pick your colour
+                </span>
+                <span className="flex gap-1.5">
+                  {PHONES.map((ph, i) => (
+                    <button
+                      key={ph.name}
+                      type="button"
+                      onClick={() => select(i)}
+                      onMouseEnter={() =>
+                        selectedRef.current === null && setGlowIdx(i)
+                      }
+                      aria-label={`Show ${ph.name}`}
+                      title={ph.name}
+                      className={`h-7 w-7 rounded-full border border-white/25 transition-transform duration-300 hover:scale-110 ${glowIdx === i ? "ring-2 ring-white/80 ring-offset-2 ring-offset-black" : ""}`}
+                      style={{ background: ph.swatch }}
+                    />
+                  ))}
+                </span>
+              </div>
             </div>
           </div>
 

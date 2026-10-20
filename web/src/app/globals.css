@@ -294,3 +294,10 @@ input[type="range"].range::-moz-range-thumb {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Home hero: smaller phones on short desktop screens (e.g. 1366×768 laptops) so they clear the CTA row. */
+@media (min-width: 1024px) and (max-height: 820px) {
+  .hero-pw {
+    --pw: min(15.5vh, 16vw) !important;
+  }
+}
